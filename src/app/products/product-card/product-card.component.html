@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">{{rating}}
+    <img [src]="protuct.thumbnail" class="card-img-top" [alt]="protuct.title">
+    <div class="card-body">
+        <span *ngIf="protuct.stock; else outOf" [ngStyle]="{color: protuct.stock!=0 ?'green':'red'}">in stock</span>
+        <ng-template #outOf >out of stock</ng-template>
+      <h5 class="card-title">{{protuct.title}}</h5>
+      <p class="card-text">{{protuct.description}}</p>
+    <div class="d-flex flex-row">
+      <div *ngFor="let star of starRating" ><fa-icon [icon]="star" ></fa-icon></div>
+    </div>
+    <div>price: {{protuct.price}}</div>
+      <a [routerLink]="['detals',protuct.id]" class="btn btn-primary">more info</a>
+    </div>
+  </div>

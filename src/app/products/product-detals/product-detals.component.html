@@ -1,0 +1,18 @@
+<div class="card" style="width: 18rem;">{{rating}}
+    <img [src]="imagSors" class="card-img-top" [alt]="protuct?.title">
+    <div class="card-body">
+        <span *ngIf="protuct?.stock; else outOf" [ngStyle]="{color: protuct?.stock!=0 ?'green':'red'}">in stock</span>
+        <ng-template #outOf >out of stock</ng-template>
+      <h5 class="card-title">{{protuct?.title}}</h5>
+      <p class="card-text">{{protuct?.description}}</p>
+      <span>{{protuct?.category}}</span>
+      <br>
+      <span>{{protuct?.brand}}</span>
+    <div class="d-flex flex-row">
+      <div *ngFor="let star of starRating" ><fa-icon [icon]="star" ></fa-icon></div>
+    </div>
+    <div>price: {{protuct?.price |priceBeforeAndAfter:protuct?.discountPercentage!}}</div>
+      <a routerLink="detals" class="btn btn-primary"> add to card </a>
+    </div>
+    <div ><span *ngFor="let sorc of protuct.images"><img [src]="sorc" class="images-smol" (click)="changImg(sorc)"></span></div>
+  </div>
